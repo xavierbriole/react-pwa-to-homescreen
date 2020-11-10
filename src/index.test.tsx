@@ -1,7 +1,7 @@
-import { ExampleComponent } from '.'
+import { ReactPWAToHomeScreen } from '.'
 
-describe('ExampleComponent', () => {
+describe('ReactPWAToHomeScreen', () => {
   it('is truthy', () => {
-    expect(ExampleComponent).toBeTruthy()
+    expect(ReactPWAToHomeScreen).toBeTruthy()
   })
 })

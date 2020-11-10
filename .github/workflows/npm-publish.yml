@@ -1,0 +1,54 @@
+name: npm-publish
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  npm-publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12.19
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Install Packages
+        run: yarn install --frozen-lockfile
+
+      - name: Run tests
+        run: yarn run test
+
+      - name: Publish on NPM
+        run: yarn publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
+
+      - name: Create changelog
+        uses: notlmn/release-with-changelog@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-template: '- {hash} {title}'
+          template: |
+            ### Changelog
+
+            {commits}
+
+            {range}
+
+      - name: Build example
+        working-directory: ./example
+        run: |
+          yarn install --frozen-lockfile
+          yarn run build
+
+      - name: Deploy to gh-pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./example/build
