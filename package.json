@@ -1,6 +1,6 @@
 {
   "name": "react-pwa-to-homescreen",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "An awesome popup that suggests you to add the PWA to homescreen",
   "author": "xavierbriole",
   "license": "MIT",
