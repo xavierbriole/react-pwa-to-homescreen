@@ -1,0 +1,24 @@
+name: pull-request
+
+on:
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  pull-request:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12.19
+
+      - name: Install Packages
+        run: yarn install --frozen-lockfile
+
+      - name: Run tests
+        run: yarn run test

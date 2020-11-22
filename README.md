@@ -7,20 +7,19 @@
 ## Install
 
 ```bash
-npm install --save react-pwa-to-homescreen
+yarn add react-pwa-to-homescreen
 ```
 
 ## Usage
 
 ```tsx
-import React, { Component } from 'react'
-
-import MyComponent from 'react-pwa-to-homescreen'
+import * as React from 'react'
+import ReactPWAToHomeScreen from 'react-pwa-to-homescreen'
 import 'react-pwa-to-homescreen/dist/index.css'
 
-class Example extends Component {
+class Example extends React.Component {
   render() {
-    return <MyComponent />
+    return <ReactPWAToHomeScreen />
   }
 }
 ```

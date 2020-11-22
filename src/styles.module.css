@@ -1,9 +1,86 @@
-/* add css module styles here (optional) */
+@keyframes slideIn {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  66% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
 
-.test {
-  margin: 2em;
-  padding: 0.5em;
-  border: 2px solid #000;
-  font-size: 2em;
+@-webkit-keyframes slideIn {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  66% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+
+.react-pwa-to-homescreen-root {
+  opacity: 1;
+}
+
+.react-pwa-to-homescreen-root-hidden {
+  opacity: 0;
+}
+
+.react-pwa-to-homescreen-popup {
+  position: fixed;
+  z-index: 9999;
+  max-width: 380px;
+  margin: auto;
+  bottom: 20px;
+  left: 0;
+  right: 0;
+  animation: slideIn 1s ease 0s normal forwards;
+}
+
+.react-pwa-to-homescreen-wrapper {
+  display: flex;
+  background-color: #ffffff;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: row;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 0 20px;
+  box-shadow: 0px 0px 40px 0px rgba(0, 0, 0, 0.2);
+}
+
+.react-pwa-to-homescreen-wrapper::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  border-top: solid 10px #ffffff;
+  border-left: solid 10px transparent;
+  border-right: solid 10px transparent;
+}
+
+.react-pwa-to-homescreen-labels-wrapper {
   text-align: center;
+}
+
+.react-pwa-to-homescreen-label {
+  font-size: 14px;
+}
+
+.react-pwa-to-homescreen-share-icon {
+  fill: #5e8ff7;
+  margin: 5px 5px 0 5px;
+}
+
+.react-pwa-to-homescreen-close-icon {
+  fill: #5e8ff7;
 }
