@@ -3,18 +3,18 @@ import useDidMountEffect from './hooks/useDidMountEffect'
 import styles from './styles.module.css'
 import CloseIcon from './icons/close'
 import ShareIcon from './icons/share'
-import { setCookie, getCookie } from './helpers/cookies'
+import Storage from './helpers/storage'
 import { isIphone } from './helpers/detect'
 import { formatMessage } from './intl/format'
 
 export const ReactPWAToHomeScreen = () => {
   const shouldHide =
-    !isIphone() || getCookie('react-pwa-to-homescreen-hidden') === 'true'
+    !isIphone() || Storage.get('react-pwa-to-homescreen-hidden') === 'true'
   const [hidden, setHidden] = React.useState(shouldHide)
 
   useDidMountEffect(() => {
     if (hidden) {
-      setCookie('react-pwa-to-homescreen-hidden', 'true', 30)
+      Storage.set('react-pwa-to-homescreen-hidden', 'true')
     }
   }, [hidden])
 
